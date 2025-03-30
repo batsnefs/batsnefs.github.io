@@ -6,93 +6,117 @@
     <title>lol u fat</title>
     <style>
         body {
-            background-color: black;
-            color: white;
+            background-color: #111;
+            color: #ddd;
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
         }
-        h1 {
-            animation: fadeIn 2s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .container {
+            padding: 50px;
         }
         .button {
             display: inline-block;
-            margin: 10px;
-            padding: 15px 30px;
             background: rgba(255, 255, 255, 0.1);
-            border: 2px solid white;
-            color: white;
+            color: #ddd;
+            padding: 12px 24px;
+            margin: 10px;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 20px;
-            transition: 0.3s;
+            font-size: 18px;
+            transition: background 0.3s, transform 0.2s;
         }
         .button:hover {
-            background: white;
-            color: black;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
         }
-        .specs-container {
-            margin-top: 50px;
-            overflow: hidden;
+        .section {
             padding: 20px;
-            position: relative;
-        }
-        .spec-item {
-            opacity: 0;
-            transform: translateY(50px);
-            animation: slideUp 1s ease-in-out forwards;
-        }
-        .spec-item:nth-child(1) { animation-delay: 0.2s; }
-        .spec-item:nth-child(2) { animation-delay: 0.4s; }
-        .spec-item:nth-child(3) { animation-delay: 0.6s; }
-        .spec-item:nth-child(4) { animation-delay: 0.8s; }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .laptop-gallery {
+            font-size: 22px;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            margin-top: 50px;
+            justify-content: center;
+            gap: 20px;
         }
-        .laptop-gallery img {
-            width: 50%;
+        .silver-text {
+            color: silver;
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+        .image-container img {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, opacity 0.5s, transform 1s ease-in-out;
             opacity: 0;
-            transform: scale(0.8);
-            animation: popIn 1s ease-in-out forwards;
+            transform: translateX(-50px);
         }
-        .laptop-gallery img:nth-child(1) { animation-delay: 0.3s; }
-        .laptop-gallery img:nth-child(2) { animation-delay: 0.6s; }
-        .laptop-gallery img:nth-child(3) { animation-delay: 0.9s; }
-        @keyframes popIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
+        .image-container img.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .alt {
+            flex-direction: row-reverse;
         }
     </style>
 </head>
 <body>
-    <h1>lol u fat</h1>
-    <a href="https://www.youtube.com/channel/UCEvSzkAA1z8mT3ZljwR7umQ" class="button">YouTube Channel</a>
-    <a href="https://www.instagram.com/q_6sim/" class="button">Super Cool Insta</a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">Super Safe Button</a>
+    <audio autoplay loop>
+        <source src="audio/red-thing.m4a" type="audio/mp4">
+    </audio>
     
-    <div class="specs-container">
-        <h2>Laptop Specifications</h2>
-        <p class="spec-item">Processor: Intel i5 8th Gen</p>
-        <p class="spec-item">RAM: 8GB DDR4</p>
-        <p class="spec-item">Storage: 512GB NVMe SSD + 1TB HDD</p>
-        <p class="spec-item">Graphics: Integrated Intel UHD</p>
+    <div class="container">
+        <a href="https://www.youtube.com/channel/UCEvSzkAA1z8mT3ZljwR7umQ" class="button">Too Much Pro Button</a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">Super Safe Button</a>
+        <a href="https://www.instagram.com/q_6sim/" class="button">Super Cool Insta</a>
     </div>
     
-    <div class="laptop-gallery">
-        <img src="laptop_front.jpg" alt="Laptop Front View">
-        <img src="laptop_side.jpg" alt="Laptop Side View">
-        <img src="laptop_back.jpg" alt="Laptop Back View">
+    <div class="silver-text">Laptop Too Much Pro</div>
+    
+    <div class="section">
+        <div>CPU: Intel i5 8th Gen</div>
+        <div class="image-container">
+            <img src="images/laptop-back.jpg" alt="Laptop Back View">
+        </div>
     </div>
+    <div class="section alt">
+        <div>RAM: 8GB</div>
+        <div class="image-container">
+            <img src="images/laptop-open.avif" alt="Laptop Open View">
+        </div>
+    </div>
+    <div class="section">
+        <div>Storage: 512GB NVMe + 1TB HDD</div>
+        <div class="image-container">
+            <img src="images/sideways-laptop.avif" alt="Laptop Sideways View">
+        </div>
+    </div>
+    
+    <div class="section">Noob still no beat RE7</div>
+    <div class="image-container">
+        <img src="images/re7-ezgif.com-webp-to-jpg-converter.jpg" alt="Resident Evil 7">
+    </div>
+    
+    <div class="section">Nigga still no play Dying Light</div>
+    <div class="image-container">
+        <img src="images/dying-the-following.jpg" alt="Dying Light The Following">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const images = document.querySelectorAll(".image-container img");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            images.forEach(img => observer.observe(img));
+        });
+    </script>
 </body>
 </html>
