@@ -72,7 +72,7 @@
     <h1>lol u fat</h1>
     
     <audio autoplay loop>
-        <source src="audio/red-thing.m4a" type="audio/m4a">
+        <source src="audio/red-thing.mp3" type="audio/mpeg">
     </audio>
     
     <div class="container">
@@ -115,7 +115,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const audio = document.querySelector('audio');
-            audio.play();  // Attempt to play the audio once the page loads
+            audio.play().catch(error => console.log("Autoplay blocked by browser"));
 
             const sections = document.querySelectorAll(".section");
             const observer = new IntersectionObserver(entries => {
@@ -131,4 +131,3 @@
     </script>
 </body>
 </html>
-
