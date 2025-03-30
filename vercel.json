@@ -11,3 +11,9 @@
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
+{
+  "routes": [
+    { "src": "/audio/(.*)", "dest": "/audio/$1" },
+    { "src": "/images/(.*)", "dest": "/images/$1" }
+  ]
+}
