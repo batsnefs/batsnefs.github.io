@@ -31,29 +31,36 @@
             background: rgba(255, 255, 255, 0.3);
             transform: scale(1.05);
         }
+        .silver-text {
+            color: silver;
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
         .section {
-            padding: 40px;
+            padding: 20px;
             font-size: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 20px;
-        }
-        .silver-text {
-            color: silver;
-            font-size: 36px;
-            font-weight: bold;
-            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         .image-container img {
             width: 300px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-            transition: transform 0.6s ease-in-out, opacity 0.6s;
             opacity: 0;
             transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .image-container img.show {
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .image-visible {
             opacity: 1;
             transform: translateX(0);
         }
@@ -63,21 +70,18 @@
     </style>
 </head>
 <body>
-    <!-- Background Music (AutoPlay) -->
     <audio autoplay loop>
-        <source src="audio/red-thing.m4a" type="audio/mpeg">
+        <source src="audio/red-thing.m4a" type="audio/m4a">
     </audio>
-    
+
     <div class="container">
         <a href="https://www.youtube.com/channel/UCEvSzkAA1z8mT3ZljwR7umQ" class="button">Too Much Pro Button</a>
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">Super Safe Button</a>
         <a href="https://www.instagram.com/q_6sim/" class="button">Super Cool Insta</a>
     </div>
-    
-    <!-- Laptop Specs Header -->
+
     <div class="silver-text">Laptop Too Much Pro</div>
 
-    <!-- Laptop Specs with Alternating Layout -->
     <div class="section">
         <div>CPU: Intel i5 8th Gen</div>
         <div class="image-container">
@@ -85,7 +89,7 @@
         </div>
     </div>
     <div class="section alt">
-        <div>RAM: 8GB DDR4</div>
+        <div>RAM: 8GB</div>
         <div class="image-container">
             <img src="image/laptop-open.avif" alt="Laptop Open View">
         </div>
@@ -97,15 +101,13 @@
         </div>
     </div>
 
-    <!-- Gaming Section -->
-    <div class="silver-text">Gaming Struggles</div>
-    
     <div class="section">
         <div>Noob still no beat RE7</div>
         <div class="image-container">
             <img src="image/re7-ezgif.com-webp-to-jpg-converter.jpg" alt="Resident Evil 7">
         </div>
     </div>
+
     <div class="section alt">
         <div>Nigga still no play Dying Light</div>
         <div class="image-container">
@@ -114,18 +116,28 @@
     </div>
 
     <script>
-        // Image Scroll Animation
         document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll(".section");
             const images = document.querySelectorAll(".image-container img");
+
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
+                        entry.target.classList.add("visible");
                     }
                 });
-            }, { threshold: 0.1 });
-            
-            images.forEach(img => observer.observe(img));
+            }, { threshold: 0.2 });
+
+            const imageObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("image-visible");
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            sections.forEach(section => observer.observe(section));
+            images.forEach(img => imageObserver.observe(img));
         });
     </script>
 </body>
