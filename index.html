@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lol u fat</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #ddd;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 50px;
+        }
+        .button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ddd;
+            padding: 12px 24px;
+            margin: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        .section {
+            padding: 20px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        .silver-text {
+            color: silver;
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+        .image-container img {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, opacity 0.5s, transform 1s ease-in-out;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        .image-container img.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .alt {
+            flex-direction: row-reverse;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="audio/red-thing.m4a" type="audio/mpeg">
+    </audio>
+    
+    <div class="container">
+        <a href="https://www.youtube.com/channel/UCEvSzkAA1z8mT3ZljwR7umQ" class="button">Too Much Pro Button</a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">Super Safe Button</a>
+        <a href="https://www.instagram.com/q_6sim/" class="button">Super Cool Insta</a>
+    </div>
+    
+    <div class="silver-text">Laptop Too Much Pro</div>
+    
+    <div class="section">
+        <div>CPU: Intel i5 8th Gen</div>
+        <div class="image-container">
+            <img src="images/laptop-back.jpg" alt="Laptop Back View">
+        </div>
+    </div>
+    <div class="section alt">
+        <div>RAM: 8GB</div>
+        <div class="image-container">
+            <img src="images/laptop-open.avif" alt="Laptop Open View">
+        </div>
+    </div>
+    <div class="section">
+        <div>Storage: 512GB NVMe + 1TB HDD</div>
+        <div class="image-container">
+            <img src="images/sideways-laptop.avif" alt="Laptop Sideways View">
+        </div>
+    </div>
+    
+    <div class="section">Noob still no beat RE7</div>
+    <div class="image-container">
+        <img src="images/re7-ezgif.com-webp-to-jpg-converter.jpg" alt="Resident Evil 7">
+    </div>
+    
+    <div class="section">Nigga still no play Dying Light</div>
+    <div class="image-container">
+        <img src="images/dying-the-following.jpg" alt="Dying Light The Following">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const images = document.querySelectorAll(".image-container img");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            images.forEach(img => observer.observe(img));
+        });
+    </script>
+</body>
+</html>
