@@ -77,7 +77,7 @@
     
     <div class="container">
         <a href="https://www.youtube.com/@batsnefs" class="button">Too Much Pro Button</a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">Super Safe Button</a>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">This Button Will Not give U Up</a>
         <a href="https://www.instagram.com/q_6sim/" class="button">Super Cool Insta</a>
     </div>
     
@@ -101,12 +101,6 @@
             <img src="image/sideways-laptop.avif" alt="Laptop Sideways View">
         </div>
     </div>
-    <div class="section alt">
-        <div>Design: Sleek and Professional</div>
-        <div class="image-container">
-            <img src="image/stack-on-top-side.avif" alt="Laptop Stacked Side View">
-        </div>
-    </div>
     
     <div class="section">Noob still no beat RE7</div>
     <div class="image-container">
@@ -120,6 +114,9 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            const audio = document.querySelector('audio');
+            audio.play();  // Attempt to play the audio once the page loads
+
             const sections = document.querySelectorAll(".section");
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
@@ -134,3 +131,4 @@
     </script>
 </body>
 </html>
+
