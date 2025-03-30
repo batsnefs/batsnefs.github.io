@@ -3,38 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batsnefs Website</title>
+    <title>lol u fat</title>
     <style>
         body {
             background-color: black;
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 50px;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         .button {
             display: inline-block;
-            padding: 15px 30px;
             margin: 10px;
-            font-size: 20px;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid white;
             color: white;
-            background-color: gray;
-            border: none;
-            cursor: pointer;
             text-decoration: none;
-            border-radius: 10px;
+            font-size: 20px;
             transition: 0.3s;
         }
         .button:hover {
-            background-color: darkgray;
+            background: white;
+            color: black;
+        }
+        .specs-container {
+            margin-top: 50px;
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+        }
+        .spec-item {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s ease-in-out forwards;
+        }
+        .spec-item:nth-child(1) { animation-delay: 0.2s; }
+        .spec-item:nth-child(2) { animation-delay: 0.4s; }
+        .spec-item:nth-child(3) { animation-delay: 0.6s; }
+        .spec-item:nth-child(4) { animation-delay: 0.8s; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .laptop-gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .laptop-gallery img {
+            width: 50%;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: popIn 1s ease-in-out forwards;
+        }
+        .laptop-gallery img:nth-child(1) { animation-delay: 0.3s; }
+        .laptop-gallery img:nth-child(2) { animation-delay: 0.6s; }
+        .laptop-gallery img:nth-child(3) { animation-delay: 0.9s; }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
 <body>
-    <h1>LOL UR GAY</h1>
-    
-    <a href="https://www.youtube.com/channel/UCEvSzkAA1z8mT3ZljwR7umQ" class="button">Click for Thing</a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">Super Safe Button</a>
+    <h1>lol u fat</h1>
+    <a href="https://www.youtube.com/channel/UCEvSzkAA1z8mT3ZljwR7umQ" class="button">YouTube Channel</a>
     <a href="https://www.instagram.com/q_6sim/" class="button">Super Cool Insta</a>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">Super Safe Button</a>
+    
+    <div class="specs-container">
+        <h2>Laptop Specifications</h2>
+        <p class="spec-item">Processor: Intel i5 8th Gen</p>
+        <p class="spec-item">RAM: 8GB DDR4</p>
+        <p class="spec-item">Storage: 512GB NVMe SSD + 1TB HDD</p>
+        <p class="spec-item">Graphics: Integrated Intel UHD</p>
+    </div>
+    
+    <div class="laptop-gallery">
+        <img src="laptop_front.jpg" alt="Laptop Front View">
+        <img src="laptop_side.jpg" alt="Laptop Side View">
+        <img src="laptop_back.jpg" alt="Laptop Back View">
+    </div>
 </body>
 </html>
