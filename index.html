@@ -13,6 +13,11 @@
             margin: 0;
             padding: 0;
         }
+        h1 {
+            color: white;
+            text-align: center;
+            padding-top: 20px;
+        }
         .container {
             padding: 50px;
         }
@@ -31,12 +36,6 @@
             background: rgba(255, 255, 255, 0.3);
             transform: scale(1.05);
         }
-        .silver-text {
-            color: silver;
-            font-size: 32px;
-            font-weight: bold;
-            margin-top: 40px;
-        }
         .section {
             padding: 20px;
             font-size: 22px;
@@ -45,24 +44,24 @@
             justify-content: center;
             gap: 20px;
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .silver-text {
+            color: silver;
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 40px;
         }
         .image-container img {
             width: 300px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .image-visible {
-            opacity: 1;
-            transform: translateX(0);
+            transition: transform 0.3s, opacity 0.5s;
         }
         .alt {
             flex-direction: row-reverse;
@@ -70,74 +69,61 @@
     </style>
 </head>
 <body>
+    <h1>lol u fat</h1>
+    
     <audio autoplay loop>
-        <source src="audio/red-thing.m4a" type="audio/m4a">
+        <source src="audio/red-thing.m4a" type="audio/mpeg">
     </audio>
-
+    
     <div class="container">
         <a href="https://www.youtube.com/channel/UCEvSzkAA1z8mT3ZljwR7umQ" class="button">Too Much Pro Button</a>
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">Super Safe Button</a>
         <a href="https://www.instagram.com/q_6sim/" class="button">Super Cool Insta</a>
     </div>
-
+    
     <div class="silver-text">Laptop Too Much Pro</div>
-
+    
     <div class="section">
         <div>CPU: Intel i5 8th Gen</div>
         <div class="image-container">
-            <img src="image/laptop-back.jpg" alt="Laptop Back View">
+            <img src="images/laptop-back.jpg" alt="Laptop Back View">
         </div>
     </div>
     <div class="section alt">
         <div>RAM: 8GB</div>
         <div class="image-container">
-            <img src="image/laptop-open.avif" alt="Laptop Open View">
+            <img src="images/laptop-open.avif" alt="Laptop Open View">
         </div>
     </div>
     <div class="section">
         <div>Storage: 512GB NVMe + 1TB HDD</div>
         <div class="image-container">
-            <img src="image/sideways-laptop.avif" alt="Laptop Sideways View">
+            <img src="images/sideways-laptop.avif" alt="Laptop Sideways View">
         </div>
     </div>
-
-    <div class="section">
-        <div>Noob still no beat RE7</div>
-        <div class="image-container">
-            <img src="image/re7-ezgif.com-webp-to-jpg-converter.jpg" alt="Resident Evil 7">
-        </div>
+    
+    <div class="section">Noob still no beat RE7</div>
+    <div class="image-container">
+        <img src="images/re7-ezgif.com-webp-to-jpg-converter.jpg" alt="Resident Evil 7">
     </div>
-
-    <div class="section alt">
-        <div>Nigga still no play Dying Light</div>
-        <div class="image-container">
-            <img src="image/dying-the-following.jpg" alt="Dying Light The Following">
-        </div>
+    
+    <div class="section">Nigga still no play Dying Light</div>
+    <div class="image-container">
+        <img src="images/dying-the-following.jpg" alt="Dying Light The Following">
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const sections = document.querySelectorAll(".section");
-            const images = document.querySelectorAll(".image-container img");
-
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
+                        entry.target.classList.add("show");
                     }
                 });
-            }, { threshold: 0.2 });
-
-            const imageObserver = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("image-visible");
-                    }
-                });
-            }, { threshold: 0.2 });
-
+            }, { threshold: 0.1 });
+            
             sections.forEach(section => observer.observe(section));
-            images.forEach(img => imageObserver.observe(img));
         });
     </script>
 </body>
