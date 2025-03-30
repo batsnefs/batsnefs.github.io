@@ -1,7 +1,16 @@
 {
-  "version": 2,
-  "routes": [
-    { "src": "/audio/(.*)", "dest": "/audio/$1" },
-    { "src": "/image/(.*)", "dest": "/image/$1" }
+  "headers": [
+    {
+      "source": "/audio/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/image/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
   ]
 }
