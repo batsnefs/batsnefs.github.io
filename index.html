@@ -32,7 +32,7 @@
             transform: scale(1.05);
         }
         .section {
-            padding: 20px;
+            padding: 40px;
             font-size: 22px;
             display: flex;
             align-items: center;
@@ -41,7 +41,7 @@
         }
         .silver-text {
             color: silver;
-            font-size: 32px;
+            font-size: 36px;
             font-weight: bold;
             margin-top: 40px;
         }
@@ -49,7 +49,7 @@
             width: 300px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s, opacity 0.5s, transform 1s ease-in-out;
+            transition: transform 0.6s ease-in-out, opacity 0.6s;
             opacity: 0;
             transform: translateX(-50px);
         }
@@ -63,6 +63,7 @@
     </style>
 </head>
 <body>
+    <!-- Background Music (AutoPlay) -->
     <audio autoplay loop>
         <source src="audio/red-thing.m4a" type="audio/mpeg">
     </audio>
@@ -73,38 +74,47 @@
         <a href="https://www.instagram.com/q_6sim/" class="button">Super Cool Insta</a>
     </div>
     
+    <!-- Laptop Specs Header -->
     <div class="silver-text">Laptop Too Much Pro</div>
-    
+
+    <!-- Laptop Specs with Alternating Layout -->
     <div class="section">
         <div>CPU: Intel i5 8th Gen</div>
         <div class="image-container">
-            <img src="images/laptop-back.jpg" alt="Laptop Back View">
+            <img src="image/laptop-back.jpg" alt="Laptop Back View">
         </div>
     </div>
     <div class="section alt">
-        <div>RAM: 8GB</div>
+        <div>RAM: 8GB DDR4</div>
         <div class="image-container">
-            <img src="images/laptop-open.avif" alt="Laptop Open View">
+            <img src="image/laptop-open.avif" alt="Laptop Open View">
         </div>
     </div>
     <div class="section">
         <div>Storage: 512GB NVMe + 1TB HDD</div>
         <div class="image-container">
-            <img src="images/sideways-laptop.avif" alt="Laptop Sideways View">
+            <img src="image/sideways-laptop.avif" alt="Laptop Sideways View">
         </div>
     </div>
+
+    <!-- Gaming Section -->
+    <div class="silver-text">Gaming Struggles</div>
     
-    <div class="section">Noob still no beat RE7</div>
-    <div class="image-container">
-        <img src="images/re7-ezgif.com-webp-to-jpg-converter.jpg" alt="Resident Evil 7">
+    <div class="section">
+        <div>Noob still no beat RE7</div>
+        <div class="image-container">
+            <img src="image/re7-ezgif.com-webp-to-jpg-converter.jpg" alt="Resident Evil 7">
+        </div>
     </div>
-    
-    <div class="section">Nigga still no play Dying Light</div>
-    <div class="image-container">
-        <img src="images/dying-the-following.jpg" alt="Dying Light The Following">
+    <div class="section alt">
+        <div>Nigga still no play Dying Light</div>
+        <div class="image-container">
+            <img src="image/dying-the-following.jpg" alt="Dying Light The Following">
+        </div>
     </div>
 
     <script>
+        // Image Scroll Animation
         document.addEventListener("DOMContentLoaded", () => {
             const images = document.querySelectorAll(".image-container img");
             const observer = new IntersectionObserver(entries => {
