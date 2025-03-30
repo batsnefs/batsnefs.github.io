@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    {
-      "source": "https://batsnefs-github-io.vercel.app",
-      "destination": "https://batsnefs.eu.org",
-      "permanent": true
-    }
-  ]
-}
