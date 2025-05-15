@@ -70,19 +70,19 @@
 </head>
 <body>
     <h1>website too much pro</h1>
-    
+   
     <audio autoplay loop>
         <source src="audio/red-thing.mp3" type="audio/mp3">
     </audio>
-    
+   
     <div class="container">
         <a href="https://www.youtube.com/@batsnefs" class="button">Too Much Pro Button</a>
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">This Button Will Not give U Up</a>
         <a href="https://www.instagram.com/q_6sim/" class="button">Not a Promotion</a>
     </div>
-    
+   
     <div class="silver-text">GAY BUDDIES</div>
-    
+   
     <div class="section">
         <div>Moosa Black</div>
         <div class="image-container">
@@ -101,12 +101,12 @@
             <img src="image/ahmad.png" alt="ahmad">
         </div>
     </div>
-    
+   
     <div class="section">dawood ugly bitch</div>
     <div class="image-container">
         <img src="image/dawood.png" alt="dawood">
     </div>
-    
+   
     <div class="section">qasim too much pro</div>
     <div class="image-container">
         <img src="image/gigachad.png" alt="qasim">
@@ -115,7 +115,17 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const audio = document.querySelector('audio');
-            audio.play().catch(error => console.log("Autoplay blocked by browser"));
+
+            // Request audio permission
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    // Permission granted, you can now play audio
+                    audio.play().catch(error => console.log("Autoplay blocked by browser"));
+                })
+                .catch(error => {
+                    console.error("Audio permission denied:", error);
+                    // Handle the error, e.g., display a message to the user
+                });
 
             const sections = document.querySelectorAll(".section");
             const observer = new IntersectionObserver(entries => {
@@ -125,7 +135,7 @@
                     }
                 });
             }, { threshold: 0.1 });
-            
+           
             sections.forEach(section => observer.observe(section));
         });
     </script>
