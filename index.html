@@ -72,7 +72,7 @@
 <body>
     <h1>website too much pro</h1>
 
-    <audio autoplay loop>
+    <audio id="bgAudio" muted autoplay loop>
         <source src="audio/red-thing.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
@@ -115,34 +115,28 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const audio = document.querySelector('audio');
+        const audio = document.getElementById("bgAudio");
 
-            // Request microphone permission (this will trigger the browser prompt)
-            navigator.mediaDevices.getUserMedia({ audio: true })
-                .then(stream => {
-                    // Permission granted, you can now play audio
-                    audio.play().catch(error => console.log("Autoplay blocked by browser:", error));
-                })
-                .catch(error => {
-                    console.error("Microphone permission denied:", error);
-                    // Handle the error, e.g., display a message to the user
-                    // You might want to try playing without permission here as a fallback,
-                    // but it might still be blocked by the browser's autoplay policy.
-                    audio.play().catch(err => console.log("Audio play failed after permission denial:", err));
-                });
-
-            const sections = document.querySelectorAll(".section");
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            sections.forEach(section => observer.observe(section));
+        // Attempt to play muted on load
+        audio.play().catch(() => {
+            // If blocked, wait for first user click
+            document.addEventListener("click", () => {
+                audio.muted = false;
+                audio.play().catch(err => console.log("Audio play failed:", err));
+            }, { once: true });
         });
+
+        // Section animation on scroll
+        const sections = document.querySelectorAll(".section");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
     </script>
 </body>
 </html>
