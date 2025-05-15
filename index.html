@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>batsnefs.com</title>
+    <link rel="icon" href="image/trademark.png" type="image/png">
     <style>
         body {
             background-color: #111;
@@ -66,23 +67,43 @@
         .alt {
             flex-direction: row-reverse;
         }
+        #playButton {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ddd;
+            padding: 12px 24px;
+            margin: 20px auto;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            width: fit-content;
+            transition: background 0.3s, transform 0.2s;
+        }
+        #playButton:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
     <h1>website too much pro</h1>
-   
-    <audio autoplay loop>
+
+    <audio id="backgroundMusic" loop>
         <source src="audio/red-thing.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
     </audio>
-   
+
+    <button id="playButton">Play Background Music</button>
+
     <div class="container">
         <a href="https://www.youtube.com/@batsnefs" class="button">Too Much Pro Button</a>
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">This Button Will Not give U Up</a>
         <a href="https://www.instagram.com/q_6sim/" class="button">Not a Promotion</a>
     </div>
-   
+
     <div class="silver-text">GAY BUDDIES</div>
-   
+
     <div class="section">
         <div>Moosa Black</div>
         <div class="image-container">
@@ -101,12 +122,12 @@
             <img src="image/ahmad.png" alt="ahmad">
         </div>
     </div>
-   
+
     <div class="section">dawood ugly bitch</div>
     <div class="image-container">
         <img src="image/dawood.png" alt="dawood">
     </div>
-   
+
     <div class="section">qasim too much pro</div>
     <div class="image-container">
         <img src="image/gigachad.png" alt="qasim">
@@ -114,18 +135,14 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const audio = document.querySelector('audio');
+            const audio = document.getElementById('backgroundMusic');
+            const playButton = document.getElementById('playButton');
 
-            // Request audio permission
-            navigator.mediaDevices.getUserMedia({ audio: true })
-                .then(stream => {
-                    // Permission granted, you can now play audio
-                    audio.play().catch(error => console.log("Autoplay blocked by browser"));
-                })
-                .catch(error => {
-                    console.error("Audio permission denied:", error);
-                    // Handle the error, e.g., display a message to the user
-                });
+            playButton.addEventListener('click', () => {
+                audio.play().catch(error => console.log("Audio play failed:", error));
+                playButton.textContent = "Playing Background Music";
+                playButton.disabled = true;
+            });
 
             const sections = document.querySelectorAll(".section");
             const observer = new IntersectionObserver(entries => {
@@ -135,7 +152,7 @@
                     }
                 });
             }, { threshold: 0.1 });
-           
+
             sections.forEach(section => observer.observe(section));
         });
     </script>
