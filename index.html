@@ -67,34 +67,15 @@
         .alt {
             flex-direction: row-reverse;
         }
-        #playButton {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ddd;
-            padding: 12px 24px;
-            margin: 20px auto;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 18px;
-            cursor: pointer;
-            display: block;
-            width: fit-content;
-            transition: background 0.3s, transform 0.2s;
-        }
-        #playButton:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
     </style>
 </head>
 <body>
     <h1>website too much pro</h1>
 
-    <audio id="backgroundMusic" loop>
+    <audio autoplay loop>
         <source src="audio/red-thing.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
-
-    <button id="playButton">Play Background Music</button>
 
     <div class="container">
         <a href="https://www.youtube.com/@batsnefs" class="button">Too Much Pro Button</a>
@@ -135,14 +116,21 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const audio = document.getElementById('backgroundMusic');
-            const playButton = document.getElementById('playButton');
+            const audio = document.querySelector('audio');
 
-            playButton.addEventListener('click', () => {
-                audio.play().catch(error => console.log("Audio play failed:", error));
-                playButton.textContent = "Playing Background Music";
-                playButton.disabled = true;
-            });
+            // Request microphone permission (this will trigger the browser prompt)
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    // Permission granted, you can now play audio
+                    audio.play().catch(error => console.log("Autoplay blocked by browser:", error));
+                })
+                .catch(error => {
+                    console.error("Microphone permission denied:", error);
+                    // Handle the error, e.g., display a message to the user
+                    // You might want to try playing without permission here as a fallback,
+                    // but it might still be blocked by the browser's autoplay policy.
+                    audio.play().catch(err => console.log("Audio play failed after permission denial:", err));
+                });
 
             const sections = document.querySelectorAll(".section");
             const observer = new IntersectionObserver(entries => {
