@@ -1,72 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>batsnefs.com</title>
-  <link rel="icon" href="image/trademark3.png" type="image/png" />
+  <link rel="icon" href="image/trademark3.png" type="image/png">
   <style>
     :root {
-      --bg: #111;
-      --text: #ddd;
-      --accent: rgba(255, 255, 255, 0.1);
-      --hover: rgba(255, 255, 255, 0.3);
-    }
-
-    body.light {
-      --bg: #f9f9f9;
-      --text: #111;
-      --accent: rgba(0, 0, 0, 0.1);
-      --hover: rgba(0, 0, 0, 0.2);
+      --bg-dark: #111;
+      --bg-light: #f5f5f5;
+      --text-dark: #111;
+      --text-light: #ddd;
+      --accent: silver;
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: Arial, sans-serif;
-      text-align: center;
       margin: 0;
-      padding: 0;
-      transition: background 0.5s, color 0.5s;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      overflow-x: hidden;
+      transition: background 0.4s ease, color 0.4s ease;
     }
 
     h1 {
-      color: var(--text);
-      padding-top: 20px;
+      text-align: center;
+      margin: 20px 0;
     }
 
     .container {
-      padding: 50px;
+      text-align: center;
+      padding: 40px 20px;
     }
 
     .button {
       display: inline-block;
-      background: var(--accent);
-      color: var(--text);
-      padding: 12px 24px;
-      margin: 10px;
-      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+      padding: 14px 28px;
+      margin: 12px;
+      border-radius: 10px;
       text-decoration: none;
       font-size: 18px;
-      transition: background 0.3s, transform 0.2s;
+      transition: all 0.3s ease;
     }
 
     .button:hover {
-      background: var(--hover);
-      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.07);
+    }
+
+    .silver-text {
+      color: var(--accent);
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 40px;
     }
 
     .section {
-      padding: 20px;
-      font-size: 22px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
+      margin: 40px 0;
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      flex-wrap: wrap;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     .section.show {
@@ -74,141 +75,111 @@
       transform: translateY(0);
     }
 
-    .silver-text {
-      color: silver;
-      font-size: 32px;
-      font-weight: bold;
-      margin-top: 40px;
-    }
-
     .image-container img {
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s, opacity 0.5s;
+      width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
     }
 
-    .alt {
-      flex-direction: row-reverse;
+    .image-container img:hover {
+      transform: scale(1.03);
     }
 
     .theme-toggle {
       position: fixed;
-      top: 15px;
-      right: 15px;
-      background: transparent;
-      border: none;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
       cursor: pointer;
-      z-index: 1000;
-      transition: transform 0.3s ease;
-    }
-
-    .theme-toggle:hover {
-      transform: scale(1.2);
+      z-index: 999;
     }
 
     .theme-toggle svg {
-      width: 30px;
-      height: 30px;
-      stroke: var(--text);
-      fill: none;
+      width: 100%;
+      height: 100%;
+      transition: opacity 0.3s ease;
     }
 
-    .moon-icon {
+    #moonIcon {
       display: none;
     }
 
-    body.light .sun-icon {
+    .light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    .light-mode .button {
+      color: var(--text-dark);
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .light-mode #sunIcon {
       display: none;
     }
 
-    body.light .moon-icon {
-      display: inline;
+    .light-mode #moonIcon {
+      display: block;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .image-container img {
-        width: 90vw;
+        width: 180px;
       }
+    }
 
-      .section {
-        font-size: 18px;
-        flex-direction: column;
+    @media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+      body {
+        font-size: 1.2em;
       }
-
-      .container {
-        padding: 20px;
+      .container, .section {
+        padding-left: 80px;
+        padding-right: 80px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Day/Night Toggle Button -->
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
-    <svg class="sun-icon" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="5" stroke-width="2" stroke="currentColor"/>
-      <g stroke="currentColor" stroke-width="2">
-        <line x1="12" y1="1" x2="12" y2="3"/>
-        <line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/>
-        <line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  <div class="theme-toggle" id="themeToggle" title="Toggle Day/Night">
+    <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="5" fill="#FFD700"/>
+      <g stroke="#FFD700" stroke-width="2">
+        <line x1="12" y1="1" x2="12" y2="4"/>
+        <line x1="12" y1="20" x2="12" y2="23"/>
+        <line x1="1" y1="12" x2="4" y2="12"/>
+        <line x1="20" y1="12" x2="23" y2="12"/>
+        <line x1="4.2" y1="4.2" x2="6.3" y2="6.3"/>
+        <line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/>
+        <line x1="17.7" y1="6.3" x2="19.8" y2="4.2"/>
+        <line x1="4.2" y1="19.8" x2="6.3" y2="17.7"/>
       </g>
     </svg>
-    <svg class="moon-icon" viewBox="0 0 24 24">
-      <path stroke="currentColor" stroke-width="2" d="M21 12.79A9 9 0 0111.21 3a7 7 0 100 14 9 9 0 009.79-4.21z"/>
+    <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 1012 21a9 9 0 009-8.21z" fill="#F5F3CE"/>
     </svg>
-  </button>
+  </div>
 
   <h1>website too much pro</h1>
 
-  <!-- Background Audio -->
   <audio id="bgAudio" muted autoplay loop>
-    <source src="audio/red-thing.mp3" type="audio/mp3" />
-    Your browser does not support the audio element.
+    <source src="audio/red-thing.mp3" type="audio/mp3">
   </audio>
 
   <div class="container">
     <a href="https://www.youtube.com/@batsnefs" class="button">Too Much Pro Button</a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">This Button Will Not give U Up</a>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">This Button Will Not Give U Up</a>
     <a href="https://www.instagram.com/q_6sim/" class="button">Not a Promotion</a>
   </div>
 
   <div class="silver-text">GAY BUDDIES</div>
 
-  <div class="section">
-    <div>Moosa Black</div>
-    <div class="image-container">
-      <img src="image/moosa.png" alt="moosa" />
-    </div>
-  </div>
-  <div class="section alt">
-    <div>zayed weird</div>
-    <div class="image-container">
-      <img src="image/zayed.png" alt="zayed" />
-    </div>
-  </div>
-  <div class="section">
-    <div>ahmad gay</div>
-    <div class="image-container">
-      <img src="image/ahmad.png" alt="ahmad" />
-    </div>
-  </div>
-  <div class="section">
-    <div>dawood ugly bitch</div>
-    <div class="image-container">
-      <img src="image/dawood.png" alt="dawood" />
-    </div>
-  </div>
-  <div class="section">
-    <div>qasim too much pro</div>
-    <div class="image-container">
-      <img src="image/gigachad.png" alt="qasim" />
-    </div>
-  </div>
+  <div class="section"><div>Moosa Black</div><div class="image-container"><img src="image/moosa.png" alt="moosa"></div></div>
+  <div class="section"><div>Zayed Weird</div><div class="image-container"><img src="image/zayed.png" alt="zayed"></div></div>
+  <div class="section"><div>Ahmad Gay</div><div class="image-container"><img src="image/ahmad.png" alt="ahmad"></div></div>
+  <div class="section"><div>Dawood Ugly Bitch</div><div class="image-container"><img src="image/dawood.png" alt="dawood"></div></div>
+  <div class="section"><div>Qasim Too Much Pro</div><div class="image-container"><img src="image/gigachad.png" alt="qasim"></div></div>
 
   <script>
     const audio = document.getElementById("bgAudio");
@@ -219,7 +190,6 @@
       }, { once: true });
     });
 
-    // IntersectionObserver for section animation
     const sections = document.querySelectorAll(".section");
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -228,12 +198,12 @@
         }
       });
     }, { threshold: 0.1 });
+
     sections.forEach(section => observer.observe(section));
 
-    // Theme toggle
-    const toggleBtn = document.getElementById("themeToggle");
-    toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("light");
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
     });
   </script>
 </body>
