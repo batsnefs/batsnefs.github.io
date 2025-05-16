@@ -1,167 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>batsnefs.com</title>
-  <link rel="icon" href="image/trademark3.png" type="image/png">
+  <link rel="icon" href="image/trademark3.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <style>
-    :root {
-      --bg-dark: #111;
-      --bg-light: #f5f5f5;
-      --text-dark: #111;
-      --text-light: #ddd;
-      --accent: silver;
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
+      font-family: 'Poppins', sans-serif;
+      background-color: #111;
+      color: #e0e0e0;
       overflow-x: hidden;
-      transition: background 0.4s ease, color 0.4s ease;
+      transition: background-color 0.6s ease, color 0.6s ease;
+    }
+
+    header {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     h1 {
-      text-align: center;
-      margin: 20px 0;
+      font-size: 28px;
+    }
+
+    #themeToggle {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    #themeToggle:hover {
+      transform: rotate(15deg);
+    }
+
+    #themeToggle img {
+      width: 100%;
     }
 
     .container {
-      text-align: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
     }
 
     .button {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--text-light);
+      background: rgba(255, 255, 255, 0.08);
       padding: 14px 28px;
-      margin: 12px;
       border-radius: 10px;
       text-decoration: none;
+      color: inherit;
       font-size: 18px;
       transition: all 0.3s ease;
     }
 
     .button:hover {
       background: rgba(255, 255, 255, 0.25);
-      transform: scale(1.07);
+      transform: scale(1.08);
     }
 
     .silver-text {
-      color: var(--accent);
-      font-size: 30px;
-      font-weight: bold;
+      font-size: 36px;
+      font-weight: 600;
+      color: silver;
       text-align: center;
-      margin-top: 40px;
+      margin-top: 80px;
     }
 
-    .section {
+    .profile-section {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      gap: 15px;
-      margin: 40px 0;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      gap: 30px;
+      padding: 80px 10%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
     }
 
-    .section.show {
-      opacity: 1;
-      transform: translateY(0);
+    .profile-section.alt {
+      flex-direction: row-reverse;
     }
 
-    .image-container img {
-      width: 250px;
+    .profile-section h2 {
+      font-size: 24px;
+      flex: 1;
+    }
+
+    .profile-section img {
+      width: 260px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s;
+      box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
+      transition: transform 0.4s ease;
     }
 
-    .image-container img:hover {
-      transform: scale(1.03);
-    }
-
-    .theme-toggle {
+    .side-panel {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      z-index: 999;
-    }
-
-    .theme-toggle svg {
-      width: 100%;
+      right: -400px;
+      top: 0;
       height: 100%;
-      transition: opacity 0.3s ease;
+      width: 400px;
+      background: #222;
+      color: #fff;
+      padding: 40px;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+      transition: right 1s cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: 2000;
     }
 
-    #moonIcon {
-      display: none;
+    .side-panel.open {
+      right: 0;
     }
 
-    .light-mode {
-      background-color: var(--bg-light);
-      color: var(--text-dark);
+    /* Light Theme */
+    body.light {
+      background-color: #fff;
+      color: #222;
     }
 
-    .light-mode .button {
-      color: var(--text-dark);
-      background: rgba(0, 0, 0, 0.1);
+    body.light .button {
+      background: rgba(0, 0, 0, 0.05);
     }
 
-    .light-mode #sunIcon {
-      display: none;
+    body.light .button:hover {
+      background: rgba(0, 0, 0, 0.15);
     }
 
-    .light-mode #moonIcon {
-      display: block;
+    body.light header {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    body.light .profile-section {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     @media (max-width: 768px) {
-      .image-container img {
-        width: 180px;
+      .profile-section {
+        flex-direction: column;
+      }
+
+      .profile-section.alt {
+        flex-direction: column;
       }
     }
 
-    @media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
-      body {
-        font-size: 1.2em;
-      }
-      .container, .section {
-        padding-left: 80px;
-        padding-right: 80px;
+    @media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+      .profile-section img {
+        width: 90vw;
       }
     }
   </style>
 </head>
 <body>
-  <div class="theme-toggle" id="themeToggle" title="Toggle Day/Night">
-    <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="5" fill="#FFD700"/>
-      <g stroke="#FFD700" stroke-width="2">
-        <line x1="12" y1="1" x2="12" y2="4"/>
-        <line x1="12" y1="20" x2="12" y2="23"/>
-        <line x1="1" y1="12" x2="4" y2="12"/>
-        <line x1="20" y1="12" x2="23" y2="12"/>
-        <line x1="4.2" y1="4.2" x2="6.3" y2="6.3"/>
-        <line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/>
-        <line x1="17.7" y1="6.3" x2="19.8" y2="4.2"/>
-        <line x1="4.2" y1="19.8" x2="6.3" y2="17.7"/>
-      </g>
-    </svg>
-    <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 1012 21a9 9 0 009-8.21z" fill="#F5F3CE"/>
-    </svg>
-  </div>
-
-  <h1>website too much pro</h1>
+  <header>
+    <h1>batsnefs.com</h1>
+    <button id="themeToggle">
+      <img id="themeIcon" src="icons/sun.svg" alt="Toggle Theme" />
+    </button>
+  </header>
 
   <audio id="bgAudio" muted autoplay loop>
     <source src="audio/red-thing.mp3" type="audio/mp3">
@@ -169,41 +184,74 @@
 
   <div class="container">
     <a href="https://www.youtube.com/@batsnefs" class="button">Too Much Pro Button</a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">This Button Will Not Give U Up</a>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">This Button Will Not give U Up</a>
     <a href="https://www.instagram.com/q_6sim/" class="button">Not a Promotion</a>
   </div>
 
   <div class="silver-text">GAY BUDDIES</div>
 
-  <div class="section"><div>Moosa Black</div><div class="image-container"><img src="image/moosa.png" alt="moosa"></div></div>
-  <div class="section"><div>Zayed Weird</div><div class="image-container"><img src="image/zayed.png" alt="zayed"></div></div>
-  <div class="section"><div>Ahmad Gay</div><div class="image-container"><img src="image/ahmad.png" alt="ahmad"></div></div>
-  <div class="section"><div>Dawood Ugly Bitch</div><div class="image-container"><img src="image/dawood.png" alt="dawood"></div></div>
-  <div class="section"><div>Qasim Too Much Pro</div><div class="image-container"><img src="image/gigachad.png" alt="qasim"></div></div>
+  <div class="profile-section" data-panel="Moosa Black Likes Pineapples">
+    <h2>Moosa Black</h2>
+    <img src="image/moosa.png" alt="Moosa">
+  </div>
+  <div class="profile-section alt" data-panel="Zayed’s the Weird One">
+    <h2>Zayed Weird</h2>
+    <img src="image/zayed.png" alt="Zayed">
+  </div>
+  <div class="profile-section" data-panel="Ahmad Just Being Gay">
+    <h2>Ahmad Gay</h2>
+    <img src="image/ahmad.png" alt="Ahmad">
+  </div>
+  <div class="profile-section alt" data-panel="Dawood... Ugly Bitch">
+    <h2>Dawood Ugly Bitch</h2>
+    <img src="image/dawood.png" alt="Dawood">
+  </div>
+  <div class="profile-section" data-panel="Qasim, the Giga Pro">
+    <h2>Qasim Too Much Pro</h2>
+    <img src="image/gigachad.png" alt="Qasim">
+  </div>
+
+  <div class="side-panel" id="panel"></div>
 
   <script>
     const audio = document.getElementById("bgAudio");
     audio.play().catch(() => {
       document.addEventListener("click", () => {
         audio.muted = false;
-        audio.play().catch(err => console.log("Audio play failed:", err));
+        audio.play();
       }, { once: true });
     });
 
-    const sections = document.querySelectorAll(".section");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    }, { threshold: 0.1 });
+    const sections = document.querySelectorAll('.profile-section');
+    const panel = document.getElementById("panel");
 
-    sections.forEach(section => observer.observe(section));
+    sections.forEach((section, index) => {
+      gsap.from(section, {
+        opacity: 0,
+        y: 50,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          onEnter: () => {
+            section.classList.add("animate");
+            panel.classList.add("open");
+            panel.innerText = section.dataset.panel;
+            setTimeout(() => {
+              panel.classList.remove("open");
+            }, 3500);
+          }
+        },
+        duration: 1,
+        ease: "power4.out"
+      });
+    });
 
     const themeToggle = document.getElementById("themeToggle");
+    const icon = document.getElementById("themeIcon");
     themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("light-mode");
+      document.body.classList.toggle("light");
+      const isLight = document.body.classList.contains("light");
+      icon.src = isLight ? "icons/moon.svg" : "icons/sun.svg";
     });
   </script>
 </body>
