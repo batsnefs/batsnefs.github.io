@@ -1,142 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>batsnefs.com</title>
-    <link rel="icon" href="image/trademark3.png" type="image/png">
-    <style>
-        body {
-            background-color: #111;
-            color: #ddd;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            color: white;
-            text-align: center;
-            padding-top: 20px;
-        }
-        .container {
-            padding: 50px;
-        }
-        .button {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            color: #ddd;
-            padding: 12px 24px;
-            margin: 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 18px;
-            transition: background 0.3s, transform 0.2s;
-        }
-        .button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
-        .section {
-            padding: 20px;
-            font-size: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .silver-text {
-            color: silver;
-            font-size: 32px;
-            font-weight: bold;
-            margin-top: 40px;
-        }
-        .image-container img {
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s, opacity 0.5s;
-        }
-        .alt {
-            flex-direction: row-reverse;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>batsnefs.com</title>
+  <link rel="icon" href="image/trademark3.png" type="image/png" />
+  <style>
+    :root {
+      --bg: #111;
+      --text: #ddd;
+      --accent: rgba(255, 255, 255, 0.1);
+      --hover: rgba(255, 255, 255, 0.3);
+    }
+
+    body.light {
+      --bg: #f9f9f9;
+      --text: #111;
+      --accent: rgba(0, 0, 0, 0.1);
+      --hover: rgba(0, 0, 0, 0.2);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    h1 {
+      color: var(--text);
+      padding-top: 20px;
+    }
+
+    .container {
+      padding: 50px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--text);
+      padding: 12px 24px;
+      margin: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 18px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .button:hover {
+      background: var(--hover);
+      transform: scale(1.05);
+    }
+
+    .section {
+      padding: 20px;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      flex-wrap: wrap;
+    }
+
+    .section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .silver-text {
+      color: silver;
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+
+    .image-container img {
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, opacity 0.5s;
+    }
+
+    .alt {
+      flex-direction: row-reverse;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.2);
+    }
+
+    .theme-toggle svg {
+      width: 30px;
+      height: 30px;
+      stroke: var(--text);
+      fill: none;
+    }
+
+    .moon-icon {
+      display: none;
+    }
+
+    body.light .sun-icon {
+      display: none;
+    }
+
+    body.light .moon-icon {
+      display: inline;
+    }
+
+    @media (max-width: 600px) {
+      .image-container img {
+        width: 90vw;
+      }
+
+      .section {
+        font-size: 18px;
+        flex-direction: column;
+      }
+
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>website too much pro</h1>
+  <!-- Day/Night Toggle Button -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+    <svg class="sun-icon" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="5" stroke-width="2" stroke="currentColor"/>
+      <g stroke="currentColor" stroke-width="2">
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </g>
+    </svg>
+    <svg class="moon-icon" viewBox="0 0 24 24">
+      <path stroke="currentColor" stroke-width="2" d="M21 12.79A9 9 0 0111.21 3a7 7 0 100 14 9 9 0 009.79-4.21z"/>
+    </svg>
+  </button>
 
-    <audio id="bgAudio" muted autoplay loop>
-        <source src="audio/red-thing.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
+  <h1>website too much pro</h1>
 
-    <div class="container">
-        <a href="https://www.youtube.com/@batsnefs" class="button">Too Much Pro Button</a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">This Button Will Not give U Up</a>
-        <a href="https://www.instagram.com/q_6sim/" class="button">Not a Promotion</a>
-    </div>
+  <!-- Background Audio -->
+  <audio id="bgAudio" muted autoplay loop>
+    <source src="audio/red-thing.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
 
-    <div class="silver-text">GAY BUDDIES</div>
+  <div class="container">
+    <a href="https://www.youtube.com/@batsnefs" class="button">Too Much Pro Button</a>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">This Button Will Not give U Up</a>
+    <a href="https://www.instagram.com/q_6sim/" class="button">Not a Promotion</a>
+  </div>
 
-    <div class="section">
-        <div>Moosa Black</div>
-        <div class="image-container">
-            <img src="image/moosa.png" alt="moosa">
-        </div>
-    </div>
-    <div class="section alt">
-        <div>zayed weird</div>
-        <div class="image-container">
-            <img src="image/zayed.png" alt="zayed">
-        </div>
-    </div>
-    <div class="section">
-        <div>ahmad gay</div>
-        <div class="image-container">
-            <img src="image/ahmad.png" alt="ahmad">
-        </div>
-    </div>
+  <div class="silver-text">GAY BUDDIES</div>
 
-    <div class="section">dawood ugly bitch</div>
+  <div class="section">
+    <div>Moosa Black</div>
     <div class="image-container">
-        <img src="image/dawood.png" alt="dawood">
+      <img src="image/moosa.png" alt="moosa" />
     </div>
-
-    <div class="section">qasim too much pro</div>
+  </div>
+  <div class="section alt">
+    <div>zayed weird</div>
     <div class="image-container">
-        <img src="image/gigachad.png" alt="qasim">
+      <img src="image/zayed.png" alt="zayed" />
     </div>
+  </div>
+  <div class="section">
+    <div>ahmad gay</div>
+    <div class="image-container">
+      <img src="image/ahmad.png" alt="ahmad" />
+    </div>
+  </div>
+  <div class="section">
+    <div>dawood ugly bitch</div>
+    <div class="image-container">
+      <img src="image/dawood.png" alt="dawood" />
+    </div>
+  </div>
+  <div class="section">
+    <div>qasim too much pro</div>
+    <div class="image-container">
+      <img src="image/gigachad.png" alt="qasim" />
+    </div>
+  </div>
 
-    <script>
-        const audio = document.getElementById("bgAudio");
+  <script>
+    const audio = document.getElementById("bgAudio");
+    audio.play().catch(() => {
+      document.addEventListener("click", () => {
+        audio.muted = false;
+        audio.play().catch(err => console.log("Audio play failed:", err));
+      }, { once: true });
+    });
 
-        // Attempt to play muted on load
-        audio.play().catch(() => {
-            // If blocked, wait for first user click
-            document.addEventListener("click", () => {
-                audio.muted = false;
-                audio.play().catch(err => console.log("Audio play failed:", err));
-            }, { once: true });
-        });
+    // IntersectionObserver for section animation
+    const sections = document.querySelectorAll(".section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
 
-        // Section animation on scroll
-        const sections = document.querySelectorAll(".section");
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show");
-                }
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(section => observer.observe(section));
-    </script>
+    // Theme toggle
+    const toggleBtn = document.getElementById("themeToggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+    });
+  </script>
 </body>
 </html>
