@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
+  <title>batsnefs.com</title>
   <style>
+    @font-face {
+      font-family: "Minecraft";
+      src: url("Minecraft.ttf") format("truetype");
+    }
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -12,55 +17,102 @@
       background: #f4f4f4;
       color: #333;
     }
+
     header {
-      background: #222;
+      background: black;
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 50px 20px;
+      font-family: "Minecraft", sans-serif;
     }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
     nav {
-      background: #444;
+      background: #222;
       display: flex;
       justify-content: center;
       padding: 10px 0;
     }
+
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 15px;
+      font-family: "Minecraft", sans-serif;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
+
     .container {
       max-width: 1000px;
       margin: auto;
       padding: 20px;
+      background: black;
+      color: white;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
     }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 15px;
     }
+
     .gallery img {
       width: 100%;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 6px rgba(255,255,255,0.3);
       transition: transform 0.2s;
     }
+
     .gallery img:hover {
       transform: scale(1.05);
     }
+
     footer {
       text-align: center;
       padding: 15px;
-      background: #222;
+      background: #111;
       color: white;
       margin-top: 20px;
+      font-family: "Minecraft", sans-serif;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Welcome to My Website</h1>
-    <p>All images are loaded from the <strong>image/
+    <h1>batsnefs.com</h1>
+    <p>Powered by Minecraft vibes 🟩⬛</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Gallery</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="container">
+    <h2 style="font-family: 'Minecraft', sans-serif;">Gallery</h2>
+    <div class="gallery">
+      <img src="image/pic1.png" alt="Image 1">
+      <img src="image/pic2.png" alt="Image 2">
+      <img src="image/pic3.png" alt="Image 3">
+      <img src="image/pic4.png" alt="Image 4">
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 batsnefs.com | Made with Minecraft spirit</p>
+  </footer>
+</body>
+</html>
+
