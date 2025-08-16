@@ -5,99 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>batsnefs</title>
   <style>
-    @font-face {
-      font-family: "Minecraft";
-      src: url("Minecraft.ttf") format("truetype");
-    }
-
     body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
       margin: 0;
       padding: 0;
-      background: #1a1a1a; /* lighter than header */
-      color: white;
-      font-family: "Minecraft", sans-serif;
-      min-height: 100vh;
+      text-align: center;
     }
-
     header {
-      background: #000; /* pure black header */
-      color: white;
-      text-align: center;
       padding: 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
-
-    header h1 {
-      font-size: 3rem;
+    h1 {
       margin: 0;
-      letter-spacing: 2px;
+      font-size: 2.5rem;
     }
-
-    .welcome {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 1.5rem;
-    }
-
     .socials {
       margin-top: 40px;
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 40px;
+      flex-wrap: wrap;
     }
-
-    .social-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 20px;
-      background: #222;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-size: 1rem;
+    .socials a {
+      display: inline-block;
       text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+      color: white;
+      transition: transform 0.2s ease-in-out;
     }
-
-    .social-btn img {
-      width: 24px;
-      height: 24px;
+    .socials a:hover {
+      transform: scale(1.2);
     }
-
-    .social-btn:hover {
-      transform: scale(1.1);
-      background: #333;
+    .socials img {
+      width: 100px;
+      height: 100px;
+      border-radius: 15px;
+      object-fit: cover;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>batsnefs.com</h1>
+    <h1>batsnefs</h1>
+    <p>Welcome to my site!</p>
   </header>
 
-  <div class="welcome">
-    Welcome to batsnefs.com
-  </div>
-
-  <div class="socials">
-    <a href="https://www.youtube.com/@batsnefs" class="social-btn" target="_blank">
-      <img src="image/youtube.jpg" alt="YouTube"> YouTube
+  <section class="socials">
+    <a href="https://www.youtube.com/@batsnefs" target="_blank">
+      <img src="youtube.jpg" alt="YouTube">
     </a>
-    <a href="https://www.instagram.com/batsnefs/" class="social-btn" target="_blank">
-      <img src="image/instagram.jpg" alt="Instagram"> Instagram
+    <a href="https://www.instagram.com/q_6sim" target="_blank">
+      <img src="instagram.jpg" alt="Instagram">
     </a>
-    <a href="https://www.twitch.tv/batsnefs" class="social-btn" target="_blank">
-      <img src="image/twitch.png" alt="Twitch"> Twitch
+    <a href="https://www.twitch.tv/" target="_blank">
+      <img src="twitch.png" alt="Twitch">
     </a>
-  </div>
+  </section>
 </body>
 </html>
-
-
-
-
-
