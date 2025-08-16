@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>batsnefs</title>
+  <link rel="stylesheet" href="minecraft.ttf">
   <style>
     body {
       font-family: 'Minecraft', sans-serif;
-      background: #111;
+      background-color: black;
       color: white;
       text-align: center;
       margin: 0;
@@ -15,69 +16,59 @@
     }
 
     h1 {
-      font-size: 3rem;
-      margin-top: 2rem;
-    }
-
-    .buttons {
-      margin-top: 2rem;
-    }
-
-    .buttons a {
+      border: 3px solid white;
       display: inline-block;
-      margin: 1rem;
-      padding: 1rem 2rem;
-      background: #333;
-      color: white;
+      padding: 10px 20px;
+      margin-top: 30px;
+    }
+
+    .button-container {
+      margin-top: 50px;
+    }
+
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: white;
+      color: black;
+      border: 2px solid white;
+      padding: 12px 20px;
+      margin: 15px auto;
+      width: 250px;
+      font-size: 18px;
       text-decoration: none;
-      border-radius: 12px;
-      font-size: 1.2rem;
-      transition: background 0.3s;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: transform 0.2s, background-color 0.2s;
     }
 
-    .buttons a:hover {
-      background: #555;
+    .button:hover {
+      background-color: gray;
+      color: white;
+      transform: scale(1.05);
     }
 
-    .socials {
-      margin-top: 3rem;
-    }
-
-    .socials img {
-      width: 80px;
-      margin: 1rem;
-      border-radius: 12px;
-      transition: transform 0.3s;
-    }
-
-    .socials img:hover {
-      transform: scale(1.1);
-    }
-
-    @font-face {
-      font-family: 'Minecraft';
-      src: url('minecraft.ttf') format('truetype');
+    .button img {
+      width: 25px;
+      height: 25px;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to batsnefs</h1>
+  <h1>batsnefs</h1>
 
-  <div class="buttons">
-    <a href="https://youtube.com/@batsnefs" target="_blank">YouTube</a>
-    <a href="https://instagram.com/q_6sim" target="_blank">Instagram</a>
-    <a href="https://twitch.tv" target="_blank">Twitch</a>
-  </div>
-
-  <div class="socials">
-    <a href="https://youtube.com/@batsnefs" target="_blank">
-      <img src="youtube.jpg" alt="YouTube">
+  <div class="button-container">
+    <a href="https://www.instagram.com/q_6sim" class="button">
+      <img src="instagram.jpg" alt="Instagram"> Instagram
     </a>
-    <a href="https://instagram.com/q_6sim" target="_blank">
-      <img src="instagram.jpg" alt="Instagram">
+    <a href="https://www.youtube.com/@batsnefs" class="button">
+      <img src="youtube.jpg" alt="YouTube"> YouTube
     </a>
-    <a href="https://twitch.tv" target="_blank">
-      <img src="twitch.png" alt="Twitch">
+    <a href="https://www.twitch.tv/" class="button">
+      <img src="twitch.png" alt="Twitch"> Twitch
     </a>
   </div>
 </body>
