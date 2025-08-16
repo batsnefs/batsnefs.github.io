@@ -13,23 +13,46 @@
     body {
       margin: 0;
       padding: 0;
-      background: #000; /* Full black background */
+      background: #1a1a1a; /* lighter than header */
       color: white;
       font-family: "Minecraft", sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh; /* Center vertically */
+      min-height: 100vh;
     }
 
-    h1 {
-      font-size: 4rem;
-      letter-spacing: 2px;
+    header {
+      background: #000; /* pure black header */
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 3rem;
       margin: 0;
+      letter-spacing: 2px;
+    }
+
+    .content {
+      padding: 50px;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #ccc;
     }
   </style>
 </head>
 <body>
-  <h1>batsnefs.com</h1>
+  <header>
+    <h1>batsnefs.com</h1>
+  </header>
+
+  <div class="content">
+    <p>Welcome to batsnefs.com</p>
+    <p>Content will go here later...</p>
+  </div>
 </body>
 </html>
+
+
