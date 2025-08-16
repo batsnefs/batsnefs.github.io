@@ -1,240 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>batsnefs.com</title>
-  <link rel="icon" href="image/trademark3.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
   <style>
-    * {
-      margin: 0; padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #111;
-      color: #e0e0e0;
-      overflow-x: hidden;
-      transition: background-color 0.6s ease, color 0.6s ease;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      color: #333;
     }
-
     header {
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.7);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    h1 {
-      font-size: 28px;
-    }
-
-    #themeToggle {
-      width: 40px;
-      height: 40px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      padding: 5px;
-      transition: transform 0.3s ease;
-    }
-
-    #themeToggle:hover {
-      transform: rotate(15deg);
-    }
-
-    #themeToggle img {
-      width: 100%;
-    }
-
-    .container {
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .button {
-      background: rgba(255, 255, 255, 0.08);
-      padding: 14px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: inherit;
-      font-size: 18px;
-      transition: all 0.3s ease;
-    }
-
-    .button:hover {
-      background: rgba(255, 255, 255, 0.25);
-      transform: scale(1.08);
-    }
-
-    .silver-text {
-      font-size: 36px;
-      font-weight: 600;
-      color: silver;
+      background: #222;
+      color: white;
       text-align: center;
-      margin-top: 80px;
+      padding: 20px;
     }
-
-    .profile-section {
+    nav {
+      background: #444;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-      padding: 80px 10%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      overflow: hidden;
+      justify-content: center;
+      padding: 10px 0;
     }
-
-    .profile-section.alt {
-      flex-direction: row-reverse;
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
     }
-
-    .profile-section h2 {
-      font-size: 24px;
-      flex: 1;
+    nav a:hover {
+      text-decoration: underline;
     }
-
-    .profile-section img {
-      width: 260px;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
-      transition: transform 0.4s ease;
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
     }
-    
-    /* Light Theme */
-    body.light {
-      background-color: #fff;
-      color: #222;
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
     }
-
-    body.light .button {
-      background: rgba(0, 0, 0, 0.05);
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
     }
-
-    body.light .button:hover {
-      background: rgba(0, 0, 0, 0.15);
+    .gallery img:hover {
+      transform: scale(1.05);
     }
-
-    body.light header {
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    body.light .profile-section {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    @media (max-width: 768px) {
-      .profile-section {
-        flex-direction: column;
-      }
-
-      .profile-section.alt {
-        flex-direction: column;
-      }
-    }
-
-    @media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
-      .profile-section img {
-        width: 90vw;
-      }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #222;
+      color: white;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>batsnefs.com</h1>
-    <button id="themeToggle">
-      <img id="themeIcon" src="icons/sun.svg" alt="Toggle Theme" />
-    </button>
-  </header>
-
-  <audio id="bgAudio" muted autoplay loop>
-    <source src="audio/red-thing.mp3" type="audio/mp3">
-  </audio>
-
-  <div class="container">
-    <a href="https://www.youtube.com/@batsnefs" class="button">Too Much Pro Button</a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">This Button Will Not give U Up</a>
-    <a href="https://www.instagram.com/q_6sim/" class="button">Not a Promotion</a>
-  </div>
-
-  <div class="silver-text">GAY BUDDIES</div>
-
-  <div class="profile-section" data-panel="Moosa Black Likes Fried Chicken And Water Melon ">
-    <h2>Moosa Black</h2>
-    <img src="image/moosa.png" alt="Moosa">
-  </div>
-  <div class="profile-section alt" data-panel="Zayed’s Really Weird">
-    <h2>Zayed Weird</h2>
-    <img src="image/zayed.png" alt="Zayed">
-  </div>
-  <div class="profile-section" data-panel="Ahmad Just Being Gay">
-    <h2>Ahmad Gay</h2>
-    <img src="image/ahmad.png" alt="Ahmad">
-  </div>
-  <div class="profile-section alt" data-panel="Dawood... Ugly Bitch">
-    <h2>Dawood Ugly Bitch</h2>
-    <img src="image/dawood.png" alt="Dawood">
-  </div>
-  <div class="profile-section" data-panel="Qasim, the Giga Pro">
-    <h2>Qasim Too Much Pro</h2>
-    <img src="image/gigachad.png" alt="Qasim">
-  </div>
-
-  <div class="side-panel" id="panel"></div>
-
-  <script>
-    const audio = document.getElementById("bgAudio");
-    audio.play().catch(() => {
-      document.addEventListener("click", () => {
-        audio.muted = false;
-        audio.play();
-      }, { once: true });
-    });
-
-    const sections = document.querySelectorAll('.profile-section');
-    const panel = document.getElementById("panel");
-
-    sections.forEach((section, index) => {
-      gsap.from(section, {
-        opacity: 0,
-        y: 50,
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          onEnter: () => {
-            section.classList.add("animate");
-            panel.classList.add("open");
-            panel.innerText = section.dataset.panel;
-            setTimeout(() => {
-              panel.classList.remove("open");
-            }, 3500);
-          }
-        },
-        duration: 1,
-        ease: "power4.out"
-      });
-    });
-
-    const themeToggle = document.getElementById("themeToggle");
-    const icon = document.getElementById("themeIcon");
-    themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("light");
-      const isLight = document.body.classList.contains("light");
-      icon.src = isLight ? "icons/moon.svg" : "icons/sun.svg";
-    });
-  </script>
-</body>
-</html>
+    <h1>Welcome to My Website</h1>
+    <p>All images are loaded from the <strong>image/
