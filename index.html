@@ -35,11 +35,42 @@
       letter-spacing: 2px;
     }
 
-    .content {
-      padding: 50px;
+    .welcome {
       text-align: center;
-      font-size: 1.2rem;
-      color: #ccc;
+      margin-top: 20px;
+      font-size: 1.5rem;
+    }
+
+    .socials {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      background: #222;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+    }
+
+    .social-btn img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .social-btn:hover {
+      transform: scale(1.1);
+      background: #333;
     }
   </style>
 </head>
@@ -48,11 +79,20 @@
     <h1>batsnefs.com</h1>
   </header>
 
-  <div class="content">
-    <p>Welcome to batsnefs.com</p>
-    <p>Content will go here later...</p>
+  <div class="welcome">
+    Welcome to batsnefs.com
+  </div>
+
+  <div class="socials">
+    <a href="https://www.youtube.com/@batsnefs" class="social-btn" target="_blank">
+      <img src="image/youtube.jpg" alt="YouTube"> YouTube
+    </a>
+    <a href="https://www.instagram.com/batsnefs/" class="social-btn" target="_blank">
+      <img src="image/instagram.jpg" alt="Instagram"> Instagram
+    </a>
+    <a href="https://www.twitch.tv/batsnefs" class="social-btn" target="_blank">
+      <img src="image/twitch.webp" alt="Twitch"> Twitch
+    </a>
   </div>
 </body>
 </html>
-
-
