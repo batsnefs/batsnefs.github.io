@@ -1,80 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>batsnefs</title>
-  <style>
-    @font-face {
-      font-family: 'Minecraft';
-      src: url('minecraft.ttf') format('truetype');
-    }
-
-    body {
-      font-family: 'Minecraft', sans-serif;
-      background-color: black;
-      color: white;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
-
-    h1 {
-      border: 3px solid white;
-      display: inline-block;
-      padding: 10px 20px;
-      margin-top: 30px;
-    }
-
-    .button-container {
-      margin-top: 50px;
-    }
-
-    .button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background-color: white;
-      color: black;
-      border: 2px solid white;
-      padding: 12px 20px;
-      margin: 15px auto;
-      width: 250px;
-      font-size: 18px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: transform 0.2s, background-color 0.2s;
-    }
-
-    .button:hover {
-      background-color: gray;
-      color: white;
-      transform: scale(1.05);
-    }
-
-    .button img {
-      width: 25px;
-      height: 25px;
-      border-radius: 5px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>batsnefs</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>batsnefs</h1>
 
-  <div class="button-container">
-    <a href="https://www.instagram.com/q_6sim" class="button">
-      <img src="instagram.jpg" alt="Instagram"> Instagram
-    </a>
-    <a href="https://www.youtube.com/@batsnefs" class="button">
-      <img src="youtube.jpg" alt="YouTube"> YouTube
-    </a>
-    <a href="https://www.twitch.tv/" class="button">
-      <img src="twitch.png" alt="Twitch"> Twitch
-    </a>
-  </div>
+    <header>
+        <h1 class="brand-title">batsnefs</h1>
+        <p class="tagline">A corner for my worlds, gallery, and experiments</p>
+
+        <div class="navbar">
+            <button id="hamburger" class="hamburger" aria-label="Menu" aria-expanded="false">&#9776;</button>
+            <nav id="nav-menu" class="nav-menu">
+                <a href="#">Worlds</a>
+                <a href="#">Gallery</a>
+                <a href="#">Hall of Shame</a>
+                <a href="#">Links</a>
+                <a href="#">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Cards -->
+        <div class="cards-container">
+            <a href="#" class="card">
+                <div class="card-icon">🌍</div>
+                <h3>Worlds</h3>
+                <p>Explore my digital landscapes</p>
+            </a>
+            <a href="#" class="card">
+                <div class="card-icon">🖼️</div>
+                <h3>Gallery</h3>
+                <p>Art and screenshots</p>
+            </a>
+            <a href="#" class="card">
+                <div class="card-icon">🤡</div>
+                <h3>Hall of Shame</h3>
+                <p>Bugs, glitches, and fails</p>
+            </a>
+            <a href="#" class="card">
+                <div class="card-icon">🔗</div>
+                <h3>Links</h3>
+                <p>Connect elsewhere</p>
+            </a>
+        </div>
+
+        <!-- Recent Updates -->
+        <section class="updates-section">
+            <h2>Recent Updates</h2>
+            <div class="update-item">
+                <span class="update-date">October 24, 2024</span>
+                <h3>Site Redesign</h3>
+                <p>Welcome to the new batsnefs homepage! Cleaner, faster, and mobile-friendly.</p>
+            </div>
+            <div class="update-item">
+                <span class="update-date">October 10, 2024</span>
+                <h3>New Project Added</h3>
+                <p>Uploaded a new experimental world download. Check the Worlds section.</p>
+            </div>
+            <div class="update-item">
+                <span class="update-date">September 28, 2024</span>
+                <h3>Gallery Update</h3>
+                <p>Added 5 new screenshots from the latest server event.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 batsnefs. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/q_6sim" class="social-btn">
+                <img src="instagram.jpg" alt="Instagram"> Instagram
+            </a>
+            <a href="https://www.youtube.com/@batsnefs" class="social-btn">
+                <img src="youtube.jpg" alt="YouTube"> YouTube
+            </a>
+            <a href="https://www.twitch.tv/" class="social-btn">
+                <img src="twitch.png" alt="Twitch"> Twitch
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
