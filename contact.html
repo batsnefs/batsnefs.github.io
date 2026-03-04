@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - batsnefs</title>
+
+    <meta name="description" content="Contact batsnefs via email.">
+    <meta name="theme-color" content="#121212">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+</head>
+<body data-page="contact">
+
+    <header>
+        <div class="nav-container">
+            <div class="brand-wrapper">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="batsnefs Logo" class="brand-logo" onerror="this.src='assets/placeholder.jpg'">
+                </a>
+                <h1 class="brand-title">batsnefs</h1>
+            </div>
+
+            <button class="hamburger" aria-label="Toggle Navigation" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="videos.html" class="nav-link">Videos</a></li>
+                    <li><a href="shorts.html" class="nav-link">Shorts</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero" style="padding: 2rem 0; margin-bottom: 2rem;">
+            <h2 class="hero-title minecraft-font">Get in Touch</h2>
+            <p>Send an email via your default mail client.</p>
+
+            <!-- Easter Egg Badges -->
+            <div style="display: flex; gap: 1rem; margin-top: 1rem; justify-content: center; flex-wrap: wrap;">
+                <span class="easter-egg-badge" data-id="inazuma" data-tooltip="Inazuma Eleven — (Placeholder reference)"></span>
+                <span class="easter-egg-badge" data-id="opm" data-tooltip="One Punch Man — Saitama's arrival"></span>
+            </div>
+        </div>
+
+        <form class="contact-form" action="mailto:batsnefs@gmail.com" method="post" enctype="text/plain">
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 0.9rem;">
+                <em>*Maintainer Note: This form uses mailto by default. Replace the action attribute with a server endpoint (like Formspree or custom API) if needed.</em>
+            </p>
+
+            <div class="form-group">
+                <label for="name" class="form-label minecraft-font">Name</label>
+                <input type="text" id="name" name="name" class="form-control" required placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label minecraft-font">Email</label>
+                <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label for="message" class="form-label minecraft-font">Message</label>
+                <textarea id="message" name="message" class="form-control" required placeholder="What's on your mind?"></textarea>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button type="submit" class="btn">Send Email</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <div class="footer-controls">
+            <button id="toggle-pixel" class="control-btn" aria-label="Toggle Minecraft Pixel Overlay" title="Keyboard Shortcut: K">Toggle Pixel Vibe</button>
+            <button class="control-btn" aria-label="Mute Audio Placeholder" title="Keyboard Shortcut: M">Mute Audio</button>
+        </div>
+        <p>&copy; 2026 batsnefs. All rights reserved.</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

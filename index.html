@@ -1,75 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>batsnefs</title>
 
-<title>batsnefs</title>
+    <!-- Meta Tags -->
+    <meta name="description" content="batsnefs - i post sometimes. Watch the latest edits and shorts.">
+    <meta name="theme-color" content="#121212">
 
-<!-- Tab icon -->
-<link rel="icon" type="image/png" href="image/trademark3.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-
-  body {
-    background: black;
-    color: white;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: clamp(2rem, 6vw, 4rem);
-    margin-bottom: 10px;
-  }
-
-  p {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    color: #aaaaaa;
-  }
-
-  footer {
-    font-size: 0.9rem;
-    color: #666;
-    padding: 10px 0;
-  }
-</style>
+    <!-- Icons -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/logo.png">
 </head>
-<body>
+<body data-page="home">
 
-  <div class="container">
-    <h1>Coming Soon</h1>
-    <p>suggest what to add :)</p>
-  </div>
+    <header>
+        <div class="nav-container">
+            <div class="brand-wrapper">
+                <img src="assets/logo.png" alt="batsnefs Logo" class="brand-logo" onerror="this.src='assets/placeholder.jpg'">
+                <h1 class="brand-title">batsnefs</h1>
+            </div>
 
-  <footer>
-    © 2026 batsnefs. All rights reserved.
-  </footer>
+            <button class="hamburger" aria-label="Toggle Navigation" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
 
-  <!-- Vercel Web Analytics -->
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="videos.html" class="nav-link">Videos</a></li>
+                    <li><a href="shorts.html" class="nav-link">Shorts</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <main>
+        <section class="hero">
+            <img src="assets/avatar.jpg" alt="batsnefs Avatar" class="hero-avatar" onerror="this.src='assets/placeholder.jpg'">
+
+            <h2 class="hero-title minecraft-font">batsnefs</h2>
+            <p class="hero-subtitle minecraft-font">@batsnefs</p>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span style="font-size: 1.5rem; color: var(--accent);">549</span>
+                    <br>
+                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Subscribers</span>
+                </div>
+                <div class="stat-item">
+                    <span style="font-size: 1.5rem; color: var(--accent);">65</span>
+                    <br>
+                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Videos</span>
+                </div>
+            </div>
+
+            <p class="hero-bio">i post sometimes</p>
+
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="videos.html" class="btn">Watch Videos</a>
+                <a href="https://roblox.com/users/706694993/profile" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Roblox Profile</a>
+
+                <!-- Easter Egg Badges scattered across pages -->
+                <span class="easter-egg-badge" data-id="dbz" data-tooltip="Dragon Ball Z — Goku edits"></span>
+                <span class="easter-egg-badge" data-id="yt" data-tooltip="YouTube — Platform Entity"></span>
+            </div>
+        </section>
+
+        <section style="margin-top: 4rem; text-align: center;">
+            <h3 class="minecraft-font" style="margin-bottom: 2rem; color: var(--text-secondary);">Latest Highlights</h3>
+            <div class="media-grid" style="justify-content: center;">
+                <!-- Preview Cards (Static for Home) -->
+                <article class="card short" style="max-width: 300px; text-align: left;">
+                    <div class="card-img-wrapper">
+                        <img src="assets/placeholder.jpg" alt="Highlight 1" class="card-img" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Yhwach edit | Devil eyes (slowed & reverb)</h3>
+                        <div class="card-meta">
+                            <span>858 views</span>
+                            <span>Latest</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" style="max-width: 300px; text-align: left;">
+                    <div class="card-img-wrapper">
+                        <img src="assets/placeholder.jpg" alt="Highlight 2" class="card-img" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">"THE BOY WHO LIVED" Harry Potter Edit</h3>
+                        <div class="card-meta">
+                            <span>2K views</span>
+                            <span>Recent</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-controls">
+            <button id="toggle-pixel" class="control-btn" aria-label="Toggle Minecraft Pixel Overlay" title="Keyboard Shortcut: K">Toggle Pixel Vibe</button>
+            <button class="control-btn" aria-label="Mute Audio Placeholder" title="Keyboard Shortcut: M">Mute Audio</button>
+        </div>
+        <p>&copy; 2026 batsnefs. All rights reserved.</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
 </body>
 </html>

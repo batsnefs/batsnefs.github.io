@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos - batsnefs</title>
+
+    <meta name="description" content="Watch the latest edits and videos by batsnefs.">
+    <meta name="theme-color" content="#121212">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+</head>
+<body data-page="videos">
+
+    <header>
+        <div class="nav-container">
+            <div class="brand-wrapper">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="batsnefs Logo" class="brand-logo" onerror="this.src='assets/placeholder.jpg'">
+                </a>
+                <h1 class="brand-title">batsnefs</h1>
+            </div>
+
+            <button class="hamburger" aria-label="Toggle Navigation" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="videos.html" class="nav-link active">Videos</a></li>
+                    <li><a href="shorts.html" class="nav-link">Shorts</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero" style="padding: 2rem 0; margin-bottom: 2rem;">
+            <h2 class="hero-title minecraft-font">Videos</h2>
+            <p>Full-length edits and montages</p>
+
+            <!-- Easter Egg Badges -->
+            <div style="display: flex; gap: 1rem; margin-top: 1rem; justify-content: center; flex-wrap: wrap;">
+                <span class="easter-egg-badge" data-id="deathnote" data-tooltip="Death Note — Light Yagami Edit"></span>
+                <span class="easter-egg-badge" data-id="mushoku" data-tooltip="Mushoku Tensei — Eris edit"></span>
+            </div>
+        </div>
+
+        <div class="controls-bar">
+            <input type="text" id="search-input" class="search-input" placeholder="Search titles... (Press G to focus)" aria-label="Search Videos">
+
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="edits">Edits</button>
+                <button class="filter-btn" data-filter="anime">Anime</button>
+                <button class="filter-btn" data-filter="gaming">Gaming</button>
+                <button class="filter-btn" data-filter="movies">Movies</button>
+                <button class="filter-btn" data-filter="shows">Shows</button>
+            </div>
+        </div>
+
+        <section id="media-grid" class="media-grid" aria-live="polite">
+            <!-- Rendered via JS -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-controls">
+            <button id="toggle-pixel" class="control-btn" aria-label="Toggle Minecraft Pixel Overlay" title="Keyboard Shortcut: K">Toggle Pixel Vibe</button>
+            <button class="control-btn" aria-label="Mute Audio Placeholder" title="Keyboard Shortcut: M">Mute Audio</button>
+        </div>
+        <p>&copy; 2026 batsnefs. All rights reserved.</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
