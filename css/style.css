@@ -1,11 +1,7 @@
 /* css/style.css */
 
 /* Fonts */
-@font-face {
-    font-family: 'Minecraft';
-    src: url('../assets/minecraft.ttf') format('truetype');
-    font-display: swap;
-}
+
 
 /* Base Styles & Variables */
 :root {
@@ -17,7 +13,7 @@
     --accent: #bb86fc;
     --accent-hover: #9c27b0;
     --nav-height: 70px;
-    --font-heading: 'Minecraft', sans-serif;
+    --font-heading: sans-serif;
     --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --focus-ring: 0 0 0 3px rgba(187, 134, 252, 0.5);
 }
