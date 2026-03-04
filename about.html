@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - batsnefs</title>
+
+    <meta name="description" content="About batsnefs channel and site info.">
+    <meta name="theme-color" content="#121212">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+</head>
+<body data-page="about">
+
+    <header>
+        <div class="nav-container">
+            <div class="brand-wrapper">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="batsnefs Logo" class="brand-logo" onerror="this.src='assets/placeholder.jpg'">
+                </a>
+                <h1 class="brand-title">batsnefs</h1>
+            </div>
+
+            <button class="hamburger" aria-label="Toggle Navigation" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="videos.html" class="nav-link">Videos</a></li>
+                    <li><a href="shorts.html" class="nav-link">Shorts</a></li>
+                    <li><a href="about.html" class="nav-link active">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h2 class="hero-title minecraft-font">About the Channel</h2>
+            <p>I post sometimes.</p>
+
+            <div class="hero-stats" style="margin-top: 2rem;">
+                <div class="stat-item">
+                    <span style="font-size: 1.5rem; color: var(--accent);">549</span>
+                    <br>
+                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Subscribers</span>
+                </div>
+                <div class="stat-item">
+                    <span style="font-size: 1.5rem; color: var(--accent);">65</span>
+                    <br>
+                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Videos</span>
+                </div>
+            </div>
+
+            <div style="max-width: 600px; text-align: left; margin: 2rem auto; background: rgba(0,0,0,0.5); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-glass);">
+                <h3 class="minecraft-font" style="color: var(--accent); margin-bottom: 1rem;">Summary</h3>
+                <p>Welcome to the official site for batsnefs! This channel features edits, gaming highlights (Roblox, Minecraft), and anime montages. The style is dark, sleek, and occasionally brings out the Minecraft vibes.</p>
+
+                <h3 class="minecraft-font" style="color: var(--accent); margin-bottom: 1rem; margin-top: 2rem;">Site Maintainer Notes</h3>
+                <ul style="color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1rem;">
+                    <li><strong>Subscriber/Video Counts:</strong> Update these manually in <code>index.html</code> and <code>about.html</code> within the <code>.hero-stats</code> section.</li>
+                    <li><strong>Video Dataset:</strong> The list of videos and shorts is stored as a static JSON array in <code>js/main.js</code> under <code>videosData</code>. Add or modify entries there to update the Videos and Shorts pages automatically.</li>
+                    <li><strong>Placeholders:</strong> Replace <code>assets/avatar.jpg</code>, <code>assets/placeholder.jpg</code>, <code>assets/favicon.ico</code>, and <code>assets/logo.png</code> with the actual images.</li>
+                </ul>
+            </div>
+
+            <!-- Easter Egg Badges -->
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                <span class="easter-egg-badge" data-id="ben10" data-tooltip="Ben 10 — (Placeholder reference)"></span>
+                <span class="easter-egg-badge" data-id="beyblade" data-tooltip="Beyblade Metal Saga — Let it Rip"></span>
+                <span class="easter-egg-badge" data-id="roblox" data-tooltip="Roblox — Platform Entity"></span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-controls">
+            <button id="toggle-pixel" class="control-btn" aria-label="Toggle Minecraft Pixel Overlay" title="Keyboard Shortcut: K">Toggle Pixel Vibe</button>
+            <button class="control-btn" aria-label="Mute Audio Placeholder" title="Keyboard Shortcut: M">Mute Audio</button>
+        </div>
+        <p>&copy; 2026 batsnefs. All rights reserved.</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
