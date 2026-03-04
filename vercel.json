@@ -1,6 +1,12 @@
 {
   "headers": [
     {
+      "source": "/(icons/:path*|minecraft.ttf|script.js|style.css|instagram.jpg|twitch.png|youtube.jpg)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
       "source": "/audio/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
