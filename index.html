@@ -1,122 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>batsnefs</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>batsnefs</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👀</text></svg>">
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: #000;
+    color: #fff;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+    overflow: hidden;
+  }
+  .eyes {
+    all: unset;
+    display: flex;
+    gap: 18px;
+    cursor: pointer;
+    border-radius: 999px;
+  }
+  .eyes:focus-visible { outline: 2px solid #fff; outline-offset: 10px; }
+  .eye {
+    width: clamp(64px, 16vw, 96px);
+    aspect-ratio: 1;
+    background: #fff;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+  }
+  .eye::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: #222;
+    transform: translateY(-102%);
+    transition: transform .08s ease-out;
+    z-index: 1;
+  }
+  .eye.blink::before { transform: translateY(0); }
+  .pupil {
+    position: absolute; left: 50%; top: 50%;
+    width: 42%; height: 42%;
+    background: #000;
+    border-radius: 50%;
+    transform: translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, 0px))) scale(var(--s, 1));
+    transition: transform .06s linear;
+  }
+  .eyes.ouch .pupil { --s: .45; }
 
-    <!-- Meta Tags -->
-    <meta name="description" content="batsnefs - i post sometimes. Watch the latest edits and shorts.">
-    <meta name="theme-color" content="#121212">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Icons -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/avatar.png">
+  p {
+    margin: 0;
+    color: #777;
+    font-size: .95rem;
+    letter-spacing: .02em;
+    min-height: 1.4em;
+  }
+  footer {
+    position: fixed;
+    bottom: 1.2rem;
+    color: #444;
+    font-size: .75rem;
+  }
+</style>
 </head>
-<body data-page="home">
+<body>
+  <button class="eyes" id="eyes" aria-label="Poke the eyes">
+    <div class="eye"><div class="pupil"></div></div>
+    <div class="eye"><div class="pupil"></div></div>
+  </button>
+  <p id="say" aria-live="polite">nothing to show here.</p>
+  <footer>© 2026 batsnefs</footer>
 
-    <header>
-        <div class="nav-container">
-            <div class="brand-wrapper">
-                <img src="assets/avatar.png" alt="batsnefs Logo" class="brand-logo" onerror="this.src='assets/placeholder.jpg'">
-                <h1 class="brand-title">batsnefs</h1>
-            </div>
+<script>
+(() => {
+  const btn = document.getElementById('eyes');
+  const eyes = [...document.querySelectorAll('.eye')];
+  const say = document.getElementById('say');
+  const base = 'nothing to show here.';
+  let idle = 0, timer;
 
-            <button class="hamburger" aria-label="Toggle Navigation" aria-expanded="false">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
+  function look(x, y) {
+    eyes.forEach(e => {
+      const r = e.getBoundingClientRect();
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      const a = Math.atan2(y - cy, x - cx);
+      const d = Math.min(Math.hypot(x - cx, y - cy) / 6, r.width * 0.22);
+      const p = e.firstElementChild;
+      p.style.setProperty('--x', Math.cos(a) * d + 'px');
+      p.style.setProperty('--y', Math.sin(a) * d + 'px');
+    });
+  }
+  addEventListener('pointermove', e => { idle = 0; look(e.clientX, e.clientY); });
+  addEventListener('pointerdown', e => { idle = 0; look(e.clientX, e.clientY); });
+  look(innerWidth / 2, innerHeight / 2);
 
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
-                    <li><a href="videos.html" class="nav-link">Videos</a></li>
-                    <li><a href="shorts.html" class="nav-link">Shorts</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  setInterval(() => {
+    if (++idle > 2) look(Math.random() * innerWidth, Math.random() * innerHeight);
+  }, 1800);
 
-    <main>
-        <section class="hero">
-            <img src="assets/logo.png" alt="batsnefs Avatar" class="hero-avatar" onerror="this.src='assets/placeholder.jpg'">
+  (function blink() {
+    eyes.forEach(e => e.classList.add('blink'));
+    setTimeout(() => eyes.forEach(e => e.classList.remove('blink')), 130);
+    setTimeout(blink, 2000 + Math.random() * 3500);
+  })();
 
-            <h2 class="hero-title minecraft-font">batsnefs</h2>
-            <p class="hero-subtitle minecraft-font">@batsnefs</p>
-
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span style="font-size: 1.5rem; color: var(--accent);">550</span>
-                    <br>
-                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Subscribers</span>
-                </div>
-                <div class="stat-item">
-                    <span style="font-size: 1.5rem; color: var(--accent);">65</span>
-                    <br>
-                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Videos</span>
-                </div>
-            </div>
-
-            <p class="hero-bio">i post sometimes</p>
-
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="videos.html" class="btn">Watch Videos</a>
-                <a href="https://roblox.com/users/706694993/profile" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Roblox Profile</a>
-
-                <!-- Easter Egg Badges scattered across pages -->
-                <span class="easter-egg-badge" data-id="dbz" data-tooltip="Dragon Ball Z — Goku edits"></span>
-                <span class="easter-egg-badge" data-id="yt" data-tooltip="YouTube — Platform Entity"></span>
-            </div>
-        </section>
-
-        <section style="margin-top: 4rem; text-align: center;">
-            <h3 class="minecraft-font" style="margin-bottom: 2rem; color: var(--text-secondary);">Latest Highlights</h3>
-            <div class="media-grid" style="justify-content: center;">
-                <!-- Preview Cards (Static for Home) -->
-                <article class="card short" style="max-width: 300px; text-align: left;">
-                    <div class="card-img-wrapper">
-                        <img src="assets/placeholder.jpg" alt="Highlight 1" class="card-img" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Yhwach edit | Devil eyes (slowed & reverb)</h3>
-                        <div class="card-meta">
-                            <span>858 views</span>
-                            <span>Latest</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card" style="max-width: 300px; text-align: left;">
-                    <div class="card-img-wrapper">
-                        <img src="assets/placeholder.jpg" alt="Highlight 2" class="card-img" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">"THE BOY WHO LIVED" Harry Potter Edit</h3>
-                        <div class="card-meta">
-                            <span>2K views</span>
-                            <span>Recent</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-controls">
-            <button id="toggle-pixel" class="control-btn" aria-label="Toggle Minecraft Pixel Overlay" title="Keyboard Shortcut: K">Toggle Pixel Vibe</button>
-            <button class="control-btn" aria-label="Mute Audio Placeholder" title="Keyboard Shortcut: M">Mute Audio</button>
-        </div>
-        <p>&copy; 2026 batsnefs. All rights reserved.</p>
-    </footer>
-
-    <!-- JS -->
-    <script src="js/main.js"></script>
+  const lines = ['ow.', 'rude.', "i'm empty. i checked.", 'stop it.', 'go touch grass.', 'still nothing.'];
+  btn.addEventListener('click', () => {
+    btn.classList.add('ouch');
+    setTimeout(() => btn.classList.remove('ouch'), 250);
+    say.textContent = lines[Math.random() * lines.length | 0];
+    clearTimeout(timer);
+    timer = setTimeout(() => say.textContent = base, 1800);
+  });
+})();
+</script>
 </body>
 </html>
